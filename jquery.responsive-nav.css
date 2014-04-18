@@ -93,7 +93,7 @@
 }
 .responsive-nav ul li ul li ul {
 	position: absolute;
-	top: -1px;
+	top: 0;
 	left: 219px;
 }
 .responsive-nav ul li ul li ul.reverse-pulldown {
@@ -128,6 +128,9 @@
 .off-canvas-nav ul li {
 	float: none !important;
 	border-top: 1px solid #333;
+}
+.off-canvas-nav ul {
+	display: block !important;
 }
 .off-canvas-nav ul li ul {
 	border-top: none;
