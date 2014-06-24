@@ -1,11 +1,11 @@
 /**
  * jquery.responsive-nav
  * Description: レスポンシブなナビゲーションを実装。プルダウンナビ <=> オフキャンバスナビ
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Takashi Kitajima
  * Autho URI: http://2inc.org
  * created : February 20, 2014
- * modified: June 21, 2014
+ * modified: June 24, 2014
  * License: GPL2
  *
  * Copyright 2014 Takashi Kitajima (email : inc@2inc.org)
@@ -124,7 +124,6 @@
 				container.children().unwrap();
 				wrapper.children().unwrap();
 				container = '';
-				console.log( _global_nav.length );
 				_global_nav.show();
 				global_nav.remove();
 			}
