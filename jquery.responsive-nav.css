@@ -1,10 +1,10 @@
 /**
  * jquery.responsive-nav.css
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Takashi Kitajima
  * Autho URI: http://2inc.org
  * created : February 20, 2014
- * modified: June 20, 2014
+ * modified: July 7, 2014
  * package: jquery
  * License: GPL2
  *
@@ -126,6 +126,7 @@
 }
 .off-canvas-nav,
 .off-canvas-nav ul li {
+	background-color: #000 !important;
 	float: none !important;
 	border-top: 1px solid #333;
 }
@@ -133,7 +134,7 @@
 	display: block !important;
 }
 .off-canvas-nav ul li ul {
-	border-top: none;
+	border-top: none !important;
 	border-left: 1px solid #333;
 	display: block !important;
 	visibility: visible !important;
@@ -143,7 +144,7 @@
 	width: auto !important;
 }
 .off-canvas-nav ul li a {
-	color: #ccc;
+	color: #ccc !important;
 	background-color: #000 !important;
 	border: none !important;
 	display: block !important;
