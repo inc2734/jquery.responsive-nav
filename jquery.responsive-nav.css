@@ -1,6 +1,6 @@
 /**
  * jquery.responsive-nav.css
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: Takashi Kitajima
  * Autho URI: http://2inc.org
  * created : February 20, 2014
@@ -89,7 +89,7 @@
 }
 .responsive-nav ul li ul li a {
 	font-weight: normal;
-	padding: 10px 15px !important;
+	padding: 10px 15px;
 }
 .responsive-nav ul li ul li ul {
 	position: absolute;
