@@ -130,7 +130,6 @@
 
 		function set_off_canvas_nav() {
 			global_nav.addClass( 'off-canvas-nav' );
-			global_nav.css( 'display', 'none' );
 			global_nav.css( 'left', - get_slide_width() );
 		}
 
