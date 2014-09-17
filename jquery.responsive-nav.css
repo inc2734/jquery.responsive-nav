@@ -114,6 +114,7 @@
 .off-canvas-nav,
 .off-canvas-nav ul li {
 	background-color: #000 !important;
+	display: block !important;
 	float: none !important;
 	border-top: 1px solid #333;
 }
@@ -136,7 +137,7 @@
 	border: none !important;
 	display: block !important;
 	padding: 10px 20px 7px !important;
-	text-decoration: none;
+	text-decoration: none !important;
 }
 .off-canvas-nav ul li a:hover,
 .off-canvas-nav ul li a:active {
