@@ -1,10 +1,10 @@
 /**
  * jquery.responsive-nav.css
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: Takashi Kitajima
  * Autho URI: http://2inc.org
  * created : February 20, 2014
- * modified: July 31, 2014
+ * modified: September 17, 2014
  * package: jquery
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -141,6 +141,15 @@
 }
 .off-canvas-nav ul li a:hover,
 .off-canvas-nav ul li a:active {
+	background-color: #222 !important;
+	color: #fff;
+}
+
+/* For WordPress */
+.off-canvas-nav ul .current-menu-item > a,
+.off-canvas-nav ul .current_page_ancestor > a,
+.off-canvas-nav ul .current_page_item > a,
+.off-canvas-nav ul .current_page_parent > a {
 	background-color: #222 !important;
 	color: #fff;
 }
