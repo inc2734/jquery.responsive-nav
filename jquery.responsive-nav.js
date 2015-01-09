@@ -1,31 +1,26 @@
 /**
  * jquery.responsive-nav
  * Description: レスポンシブなナビゲーションを実装。プルダウンナビ <=> オフキャンバスナビ
- * Version: 1.0.8
+ * Version: 1.1.0
  * Author: Takashi Kitajima
  * Autho URI: http://2inc.org
  * created : February 20, 2014
- * modified: September 17, 2014
+ * modified: January 9, 2015
  * package: jquery
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 ;( function( $ ) {
 	$.fn.responsive_nav = function( config ) {
-		var is_open = false;
-		var container, wrapper, global_nav;
-		var _global_nav = this;
+		var is_open     = false;
+		var container   = $( 'body' );
+		var responsive_nav = this;
+		var offcanvas_nav;
 
 		return this.each( function( i, e ) {
-			global_nav = _global_nav.clone( true );
-			_global_nav.addClass( 'responsive-nav' );
-
-			if ( $( '#responsive-btn' ).css( 'display' ) !== 'none' ) {
-				wrap_all();
-				set_off_canvas_nav();
-			} else {
-				_global_nav.show();
-			}
+			offcanvas_nav = responsive_nav.clone( true );
+			responsive_nav.addClass( 'responsive-nav' );
+			init();
 
 			var menu = $( this ).find( 'ul:first-child' );
 			menu.children( 'li' ).children( 'ul' ).children( 'li' ).hover( function() {
@@ -40,26 +35,9 @@
 
 			$( window ).resize( function() {
 				var children = menu.children( 'li' ).children( 'ul' ).children( 'li' );
-						children.removeClass( 'reverse-pulldown' );
-						children.find( 'ul' ).removeClass( 'reverse-pulldown' );
-				if ( $( '#responsive-btn' ).css( 'display' ) !== 'none' ) {
-					wrap_all();
-					set_off_canvas_nav();
-					if ( is_open ) {
-						container.css( 'marginLeft', get_slide_width() );
-						var height = $( window ).height();
-						global_nav.css( {
-							height: height
-						} );
-						wrapper.css( {
-							height: height,
-							overflow: 'hidden'
-						} );
-					}
-				} else {
-					unwrap();
-					unset_off_canvas_nav();
-				}
+				children.removeClass( 'reverse-pulldown' );
+				children.find( 'ul' ).removeClass( 'reverse-pulldown' );
+				init();
 			} );
 
 			$( '#responsive-btn' ).click( function() {
@@ -76,25 +54,31 @@
 			} );
 		} );
 
+		function init() {
+			if ( $( '#responsive-btn' ).css( 'display' ) !== 'none' ) {
+				wrap_all();
+			} else {
+				unwrap();
+				unset_off_canvas_nav();
+			}
+		}
+
 		function get_slide_width() {
-			return global_nav.width();
+			return offcanvas_nav.width();
 		}
 
 		function nav_open() {
-			var height = $( window ).height();
-			global_nav.css( {
+			var height = get_window_height();
+			offcanvas_nav.css( {
 				height: height
 			} );
-			global_nav.show();
+			offcanvas_nav.show();
 			container.css( 'width', container.width() );
 			container.animate( {
 				marginLeft: get_slide_width()
 			}, 200, function() {
 				is_open = true;
-				wrapper.css( {
-					height: height,
-					overflow: 'hidden'
-				} );
+				container.addClass( 'nav-open' );
 			} );
 		}
 
@@ -109,35 +93,34 @@
 
 		function unwrap() {
 			is_open = false;
-			if ( container ) {
-				container.children().unwrap();
-				wrapper.children().unwrap();
-				container = '';
-				_global_nav.show();
-				global_nav.remove();
-			}
+			container.css( {
+				'width'     : '',
+				'marginLeft': ''
+			} );
+			container.removeClass( 'is-offcanvas-nav' );
+			container.removeClass( 'nav-open' );
+			responsive_nav.show();
+			offcanvas_nav.remove();
 		}
 
 		function wrap_all() {
-			if ( !container ) {
-				$( 'body' ).children( '*:not(#wpadminbar)' ).wrapAll( '<div id="responsive-nav-container" />' );
-				container = $( '#responsive-nav-container' );
-				container.wrapAll( '<div id="responsive-nav-wrapper" />' );
-				wrapper = $( '#responsive-nav-wrapper' );
-				container.css( 'position', 'relative' );
-				container.prepend( global_nav );
-				_global_nav.hide();
-			}
+			container.addClass( 'is-offcanvas-nav' );
+			container.prepend( offcanvas_nav );
+			responsive_nav.hide();
+			offcanvas_nav.addClass( 'off-canvas-nav' );
+			offcanvas_nav.css( 'left', - get_slide_width() );
 		}
 
-		function set_off_canvas_nav() {
-			global_nav.addClass( 'off-canvas-nav' );
-			global_nav.css( 'left', - get_slide_width() );
+		function get_window_height() {
+			var height      = $( window ).height();
+			var html_margin = parseInt( $( 'html' ).css( 'marginTop' ) );
+			height = height - html_margin;
+			return height;
 		}
 
 		function unset_off_canvas_nav() {
-			global_nav.removeClass( 'off-canvas-nav' );
-			global_nav.css( 'display', 'block' );
+			offcanvas_nav.removeClass( 'off-canvas-nav' );
+			offcanvas_nav.css( 'display', 'block' );
 		}
 	}
 } )( jQuery );

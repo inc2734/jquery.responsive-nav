@@ -1,14 +1,24 @@
 /**
  * jquery.responsive-nav.css
- * Version: 1.0.6
+ * Version: 1.1.0
  * Author: Takashi Kitajima
  * Autho URI: http://2inc.org
  * created : February 20, 2014
- * modified: September 17, 2014
+ * modified: January 9, 2015
  * package: jquery
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
+
+/**
+ * body
+ */
+.nav-open {
+	overflow: hidden;
+}
+.is-offcanvas-nav {
+	position: relative;
+}
 
 /**
  * #responsive-btn
@@ -16,7 +26,7 @@
  */
 #responsive-btn {
 	background-image: url( ./nav-black.png );
-	height: 21px;
+	height: 19px;
 	width: 20px;
 	overflow: hidden;
 	text-indent: -9999px;
