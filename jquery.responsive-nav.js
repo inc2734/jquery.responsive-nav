@@ -37,7 +37,9 @@
 				var children = menu.children( 'li' ).children( 'ul' ).children( 'li' );
 				children.removeClass( 'reverse-pulldown' );
 				children.find( 'ul' ).removeClass( 'reverse-pulldown' );
-				init();
+				if ( is_open ) {
+					nav_close();
+				}
 			} );
 
 			$( '#responsive-btn' ).click( function() {
