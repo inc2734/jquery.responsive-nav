@@ -1,11 +1,11 @@
 /**
  * jquery.responsive-nav
  * Description: レスポンシブなナビゲーションを実装。プルダウンナビ <=> オフキャンバスナビ
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Takashi Kitajima
  * Autho URI: http://2inc.org
  * created : February 20, 2014
- * modified: January 9, 2015
+ * modified: January 14, 2015
  * package: jquery
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -13,7 +13,7 @@
 ;( function( $ ) {
 	$.fn.responsive_nav = function( config ) {
 		var is_open     = false;
-		var container   = $( 'body' );
+		var container   = $( '#responsive-nav-wrapper' );
 		var responsive_nav = this;
 		var offcanvas_nav;
 
@@ -37,6 +37,7 @@
 				var children = menu.children( 'li' ).children( 'ul' ).children( 'li' );
 				children.removeClass( 'reverse-pulldown' );
 				children.find( 'ul' ).removeClass( 'reverse-pulldown' );
+				init();
 				if ( is_open ) {
 					nav_close();
 				}
@@ -80,7 +81,7 @@
 				marginLeft: get_slide_width()
 			}, 200, function() {
 				is_open = true;
-				container.addClass( 'nav-open' );
+				$( 'body' ).addClass( 'nav-open' );
 			} );
 		}
 
@@ -99,14 +100,12 @@
 				'width'     : '',
 				'marginLeft': ''
 			} );
-			container.removeClass( 'is-offcanvas-nav' );
-			container.removeClass( 'nav-open' );
+			$( 'body' ).removeClass( 'nav-open' );
 			responsive_nav.show();
 			offcanvas_nav.remove();
 		}
 
 		function wrap_all() {
-			container.addClass( 'is-offcanvas-nav' );
 			container.prepend( offcanvas_nav );
 			responsive_nav.hide();
 			offcanvas_nav.addClass( 'off-canvas-nav' );

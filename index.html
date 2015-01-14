@@ -60,6 +60,7 @@
 	<style>
 	#global-nav {
 		background-color: #3886FC;
+		display: none;
 	}
 	#global-nav ul li a {
 		color: #fff;
@@ -97,6 +98,7 @@
 	</style>
 </head>
 <body>
+<div id="responsive-nav-wrapper">
 
 <div id="responsive-btn"></div>
 <h1>jQuery.responsive-nav デモ</h1>
@@ -145,6 +147,9 @@
 	</code></pre>
 
 	<h2>HTML</h2>
+	<p>
+		まず、body直下を &lt;div id=&quot;responsive-nav-wrapper&quot;&gt;&lt;/div&gt; で囲みます。これがないと動作しないとでご注意ください。
+	</p>
 	<p>
 		&lt;div id=&quot;responsive-btn&quot;&gt;&lt;/div&gt; は任意の場所に設置できます。<b>PC用のナビゲーションを表示するかスマートフォン用のナビゲーションを表示するかは、&lt;div id=&quot;responsive-btn&quot;&gt;&lt;/div&gt; が display: block か displya: none かで判断されます。</b>display: block だとスマートフォン用ナビゲーションを表示、display: none だとPC用のナビゲーションを表示します。デフォルトは display: none となるので、メディアクエリーで一定の幅より狭くなったときに display: block にするように設定します。
 	</p>
@@ -214,5 +219,7 @@
 <section>
 	Copyright &copy; Takashi Kitajima All Rights Reserved.
 </section>
+
+</div>
 </body>
 </html>

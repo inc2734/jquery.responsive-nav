@@ -1,10 +1,10 @@
 /**
  * jquery.responsive-nav.css
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Takashi Kitajima
  * Autho URI: http://2inc.org
  * created : February 20, 2014
- * modified: January 9, 2015
+ * modified: January 14, 2015
  * package: jquery
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -13,11 +13,11 @@
 /**
  * body
  */
+#responsive-nav-wrapper {
+	position: relative;
+}
 .nav-open {
 	overflow: hidden;
-}
-.is-offcanvas-nav {
-	position: relative;
 }
 
 /**
