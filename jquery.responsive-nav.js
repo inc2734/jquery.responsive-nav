@@ -50,7 +50,7 @@
 					nav_open();
 				}
 			} );
-			$( 'body' ).click( function() {
+			$( 'html' ).click( function() {
 				if ( is_open ) {
 					nav_close();
 				}
